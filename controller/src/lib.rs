@@ -136,9 +136,9 @@ pub struct MintCtx<'info> {
     pub to_token_account: Account<'info, TokenAccount>,
 
     #[account(
-        mut,
+        constraint = signer.is_signer == true
     )]
-    pub signer: Signer<'info>,
+    pub signer: AccountInfo<'info>,
 
     pub token_program: Program<'info, Token>
 }
